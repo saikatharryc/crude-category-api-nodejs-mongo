@@ -19,6 +19,11 @@ router.get('/super',function(req,res) {
 	});
 });
 
+/**
+*************************************
+**Location wise search the services**
+*************************************
+**/
 router.get('/super/:LocationID',function(req,res) {
 
   var locationId = req.params.LocationID;
@@ -34,23 +39,6 @@ router.get('/super/:LocationID',function(req,res) {
       });
   });
 });
-
-router.get('/super/:servicenID',function(req,res) {
-
-  var serviceId = req.params.serviceID;
-
-  hnd.find({name: serviceId},function(err, docs){
-    console.log(docs)
-    res.render(
-      'api',
-      {
-        title: 'API HERE',
-
-        docs: docs
-      });
-  });
-});
-
 
 
 
