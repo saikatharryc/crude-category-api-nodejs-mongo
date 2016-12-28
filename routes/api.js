@@ -50,7 +50,7 @@ router.post('/super', function(req, res) {
   });
 });
 
-router.put('/super/update/:id', function(req, res) {
+router.put('/update/:id', function(req, res) {
   var query = {"_id": req.params.id};
   var update = {name : req.body.name, location: req.body.location};
   var options = {new: true};
@@ -63,7 +63,7 @@ router.put('/super/update/:id', function(req, res) {
   });
 });
 
-router.delete('/super/update/:id', function(req, res) {
+router.delete('/update/:id', function(req, res) {
   var query = {"_id": req.params.id};
   hnd.findOneAndRemove(query, function(err, hand){
     console.log(hand)
