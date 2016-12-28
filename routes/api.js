@@ -19,11 +19,11 @@ router.get('/super',function(req,res) {
 	});
 });
 
-router.get('/super/:serviceID',function(req,res) {
+router.get('/super/:LocationID',function(req,res) {
 
-  var serviceId = req.params.serviceID;
+  var locationId = req.params.LocationID;
 
-  hnd.find({name: serviceId},function(err, docs){
+  hnd.find({name: locationId},function(err, docs){
     console.log(docs)
     res.render(
       'api',
@@ -48,7 +48,7 @@ router.post('/super', function(req, res) {
 
 router.put('/update/:id', function(req, res) {
   var query = {"_id": req.params.id};
-  var update = {name : req.body.name};
+  var update = {name : req.body.name, location: req.body.location};
   var options = {new: true};
   hnd.findOneAndUpdate(query, update, options, function(err, hand){
     console.log(hand)
