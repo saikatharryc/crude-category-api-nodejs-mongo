@@ -35,6 +35,22 @@ router.get('/super/:LocationID',function(req,res) {
   });
 });
 
+router.get('/super/:servicenID',function(req,res) {
+
+  var serviceId = req.params.serviceID;
+
+  hnd.find({name: serviceId},function(err, docs){
+    console.log(docs)
+    res.render(
+      'api',
+      {
+        title: 'API HERE',
+
+        docs: docs
+      });
+  });
+});
+
 
 
 
