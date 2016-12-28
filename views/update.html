@@ -11,7 +11,7 @@
 
     <br>
 
-    <form method="post" action="/api/super/update/{{hand.id}}?_method=PUT">
+    <form method="post" action="/api/update/{{hand.id}}?_method=PUT">
       <div class="form-group">
         <label>Service name</label>
         <input type="text" name="name" class="form-control" value="{{hand.name}}" required>
@@ -21,7 +21,7 @@
 
     <br>
 
-    <form method="post" action="/api/super/update/{{hand.id}}?_method=DELETE" class="form-inline">
+    <form method="post" action="/api/update/{{hand.id}}?_method=DELETE" class="form-inline">
       <button type="submit" class="btn btn-default">Delete</button>
     </form>
 
