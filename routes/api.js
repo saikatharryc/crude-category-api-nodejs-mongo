@@ -35,6 +35,9 @@ router.get('/super/:serviceID',function(req,res) {
   });
 });
 
+
+
+
 router.post('/super', function(req, res) {
   new hnd({name : req.body.name , location : req.body.location})
   .save(function(err,hand){

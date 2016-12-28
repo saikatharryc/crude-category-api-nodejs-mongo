@@ -10,5 +10,5 @@ var supers = new Schema(
 );
 
 mongoose.model('handel', supers);
-// mongoose.connect('mongodb://localhost/local211');
- mongoose.connect('mongodb://local211:local211@ds145208.mlab.com:45208/local211');
+ mongoose.connect('mongodb://localhost/local211');
+// mongoose.connect('mongodb://local211:local211@ds145208.mlab.com:45208/local211');
