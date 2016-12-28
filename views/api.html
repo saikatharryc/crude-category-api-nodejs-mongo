@@ -27,20 +27,10 @@
 
     <ul>
     {% for hand in docs %}
-      <li><a href="update/{{hand.id}}">{{hand.name}}</a></li>
+      <li><a href="update/{{hand.id}}">{{hand.name}}</a> --- {{hand.location}}</li>
 
     {% endfor %}
     </ul>
-<hr><br>
-<h2>All Services</h2>
-
-    <ul>
-    {% for hand in docs %}
-      <li><a href="update/{{hand.id}}">{{hand.location}}</a></li>
-
-    {% endfor %}
-    </ul>
-
   </div>
 
 {% endblock %}

@@ -13,11 +13,26 @@ router.get('/super',function(req,res) {
 		res.render(
 			'api',
 			{
-				title: 'API HERE' +docs.name ,docs.location,
-
+				title: 'API HERE' ,
 				docs: docs
 			});
 	});
+});
+
+router.get('/super/:serviceID',function(req,res) {
+
+  var serviceId = req.params.serviceID;
+
+  hnd.find({name: serviceId},function(err, docs){
+    console.log(docs)
+    res.render(
+      'api',
+      {
+        title: 'API HERE',
+
+        docs: docs
+      });
+  });
 });
 
 router.post('/super', function(req, res) {
@@ -36,7 +51,7 @@ router.put('/update/:id', function(req, res) {
     console.log(hand)
     res.render(
       'api',
-      {title : 'Handy API - ' + docs.name, docs : docs}
+      {title : 'Handy - ' + docs.name, docs : docs}
     );
   });
 });
