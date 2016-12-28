@@ -7,4 +7,4 @@ var supers = new Schema(
 
 mongoose.model('handel', supers);
 
-mongoose.connect('mongodb://localhost/super');
+mongoose.connect('mongodb://local211:local211@ds145208.mlab.com:45208/local211');
