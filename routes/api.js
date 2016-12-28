@@ -4,7 +4,7 @@ var hnd = mongoose.model('handel')
 var router = express.Router();
 
 router.get('/', function(req, res) {
-  res.render('api', { title: 'Services here'});
+  res.render('api', { title: 'Services here' ,name : 'saikat'});
 });
 
 router.get('/super',function(req,res) {
