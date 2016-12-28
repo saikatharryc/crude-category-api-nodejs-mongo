@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+
+    <h1>{{ title }}</h1>
+
+    <br>
+
+    <form method="post" action="/api/super" class="form-inline">
+      <div class="form-group">
+        <label>Service name</label>
+        <input type="text" name="name" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-default">Save</button>
+    </form>
+
+    <hr><br>
+
+    <h2>All Services</h2>
+
+    <ul>
+    {% for hand in docs %}
+      <li><a href="update/{{hand.id}}">{{hand.name}}</a></li>
+
+    {% endfor %}
+    </ul>
+
+  </div>
+
+{% endblock %}
