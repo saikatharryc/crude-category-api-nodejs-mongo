@@ -23,7 +23,7 @@ router.get('/super/:LocationID',function(req,res) {
 
   var locationId = req.params.LocationID;
 
-  hnd.find({name: locationId},function(err, docs){
+  hnd.find({location: locationId},function(err, docs){
     console.log(docs)
     res.render(
       'api',
