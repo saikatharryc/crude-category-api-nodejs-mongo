@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+
+    <h1>{{ title }}</h1>
+
+    <br>
+
+    <form method="post" action="/api/update/{{docs.id}}?_method=PUT">
+      <div class="form-group">
+        <label>Services name and Location</label>
+        <input type="text" name="name" class="form-control" value="{{docs.name}}" required>
+        <input type="text" name="location" class="form-control" value="{{docs.location}}" required>
+      </div>
+      <button type="submit" class="btn btn-default">Update</button>
+    </form>
+
+    <br>
+
+    <form method="post" action="/api/update/{{docs.id}}?_method=DELETE" class="form-inline">
+      <button type="submit" class="btn btn-default">Delete</button>
+    </form>
+
+  </div>
+
+{% endblock %}
