@@ -1,6 +1,8 @@
 var express = require('express');
+
 var router = express.Router();
 var mongoose = require('mongoose');
+
 var db = mongoose.model('collection');
 
 
@@ -13,6 +15,38 @@ router.get('/super', function(req, res) {
     );
   });
 });
+/*
+ **********************
+ *location as @param. *
+ *GET services list @ *
+ *    location.       *
+ **********************
+ */
+router.get('/super/sr/:locationID',function(req,res){
+  var locationId = req.params.locationID; 
+  db.find({ location: locationId }).distinct('name').exec(function(error, services) { 
+    console.log(services) 
+    res.send(services); 
+  });
+});
+
+/*
+ ************************
+ *Service name as @param*
+ *GET locations list @  *
+ *service availabele.   *
+ ************************
+ */
+router.get('/super/loc/:servID',function(req,res){
+  var servId = req.params.servID; 
+  db.find({ name: servId }).distinct('location').exec(function(error, locationss) { 
+    console.log(locationss) 
+    res.send(locationss); 
+  });
+});
+
+
+
 
 router.post('/super', function(req, res) {
   new db({name : req.body.name , location : req.body.location})
