@@ -8,12 +8,19 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
 var methodOverride = require('method-override');
+var formidable    =    require('formidable');
+   var util       =    require('util');
 
+var fs = require('fs');
+
+var mongoose = require('mongoose');
+var db = mongoose.model('collection');
 
 //routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var api = require('./routes/api');
+
 
 var app = express();
 
@@ -22,6 +29,59 @@ app.set('views', path.join(__dirname, 'views'));
 var swig = new swig.Swig();
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
+
+
+app.get('/api', function(req,res){
+  res.render('upload', {title: 'Upload Photos'});
+});
+
+
+app.post('/api/upload', function(req,res){
+
+    var form = new formidable.IncomingForm();
+
+    // Formidable Options
+    form.uploadDir = __dirname + '/uploads';
+    form.keepExtensions = true;
+form.on('file', function(field, file) {
+            //rename the incoming file to the file's name
+                fs.rename(file.path, form.uploadDir + "/" + file.name);
+        });
+
+        form.on('error', function(err) {
+            console.log("an error has occured with form upload");
+            console.log(err);
+            request.resume();
+        });
+
+        form.on('aborted', function(err) {
+            console.log("user aborted upload");
+        });
+
+        form.on('end', function() {
+            console.log('-> upload done');
+        });
+
+      form.parse(req, function(err, fields, files) {
+      res.writeHead(200, {'content-type': 'text/plain'});
+      res.write('received upload:\n\n');
+      res.end(util.inspect({fields: fields, files: files}));
+
+});
+    
+});
+
+
+
+app.listen(8080, function(){
+  console.log('Server listening on 8080!');
+});
+
+
+
+
+
+
 
 app.use(methodOverride('_method'))
 app.use(logger('dev'));
@@ -64,6 +124,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
 
 
 module.exports = app;

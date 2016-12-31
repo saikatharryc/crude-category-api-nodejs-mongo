@@ -1,10 +1,10 @@
 var express = require('express');
+var fs =require('fs');
+var bodyParser = require('body-parser');
 
 var router = express.Router();
 var mongoose = require('mongoose');
-
 var db = mongoose.model('collection');
-
 
 router.get('/super', function(req, res) {
   db.find(function(err, mainhandle){
@@ -56,9 +56,6 @@ router.post('/super', function(req, res) {
   });
 });
 
-router.get('/super/services', function(req, res) {
-  res.send("hello");
-});
 
 router.get('/update/:id', function(req, res) {
   var query = {"_id": req.params.id};
@@ -91,5 +88,6 @@ router.delete('/update/:id', function(req, res) {
     res.redirect('/api/super');
   });
 });
+
 
 module.exports = router;
