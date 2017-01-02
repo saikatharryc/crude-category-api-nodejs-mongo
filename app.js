@@ -66,7 +66,10 @@ form.on('file', function(field, file) {
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
       res.end(util.inspect({fields: fields, files: files}));
-    
+      new db({imagep :req.file.imagep} ,req.file).save(function(err, imo) {
+    console.log(imo)
+    res.redirect('/api/image');
+  });
 
 });
     

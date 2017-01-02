@@ -30,6 +30,15 @@ router.get('/super/sr/:locationID',function(req,res){
   });
 });
 
+
+router.get('/super/locations',function(req,res){
+  db.distinct('location',function(err, docs1){
+            console.log(docs1);
+            res.send(docs1);
+      });
+
+});
+
 /*
  ************************
  *Service name as @param*
