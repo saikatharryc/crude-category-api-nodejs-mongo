@@ -25,6 +25,8 @@ router.get('/super', function(req, res) {
   })
 
 });
+
+
 /*
  **********************
  *location as @param. *
@@ -105,7 +107,7 @@ router.post('/super', function(req, res) {
   new db({name : req.body.name , location : req.body.location})
   .save(function(err, docs) {
     console.log(docs)
-    res.redirect('/api/super');
+    res.send(docs);
   });
 })
 });
@@ -164,7 +166,7 @@ router.delete('/update/:id', function(req, res) {
   var query = {"_id": req.params.id};
   db.findOneAndRemove(query, function(err, docs){
     console.log(docs)
-    res.redirect('/api/super');
+    res.send(docs);
   });
   })
 });
