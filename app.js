@@ -11,7 +11,7 @@ var methodOverride = require('method-override');
 var formidable = require('formidable');
 var util = require('util');
 var fs = require('fs');
-
+const cors = require('cors');
 var mongoose = require('mongoose');
 var db = mongoose.model('collection');
 var user = mongoose.model('User')
@@ -23,7 +23,7 @@ var api = require('./routes/api');
 
 
 var app = express();
-
+app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 var swig = new swig.Swig();
