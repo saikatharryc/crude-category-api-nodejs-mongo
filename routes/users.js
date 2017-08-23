@@ -13,7 +13,7 @@ router.post('/login',function(req,res,next){
   if(req.body.user==='kiot' && req.body.password==='Kiot@321'){
     let  token='';
     for(i=0;i<15;i++){
-      token+=String.fromCharCode(Math.floor(Math.random() * (110 - 60) + 60));
+      token+=String.fromCharCode(Math.floor(Math.random() * (120 - 100) + 100));
     }
       new db({token:token})
       .save(function(reject,done){
