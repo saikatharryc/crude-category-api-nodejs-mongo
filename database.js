@@ -7,6 +7,11 @@ var schemahandy = new Schema(
   }
 );
 
+  var User = new Schema({
+   token:String
+  });
+  
+  mongoose.model('User',User);
 mongoose.model('collection', schemahandy);
 
 //mongoose.connect('mongodb://localhost/local211');
