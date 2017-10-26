@@ -147,7 +147,7 @@ router.post('/update/create', function(req, res) {
       location:req.body.location
     };
     let some = new db(savableObj);
-  some.save().exec(function(err, docs){
+  some.save(function(err, docs){
     console.log(docs)
     res.send(
       {docs : docs}
