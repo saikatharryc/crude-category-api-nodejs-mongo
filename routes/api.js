@@ -132,7 +132,31 @@ router.get('/update/:id', function(req, res) {
 })
 });
 
-router.put('/update/:id', function(req, res) {
+
+router.post('/update/create', function(req, res) {
+  let token = req.headers.token;
+  if(!token){
+    return res.send({err:'Unauthorized'})
+  }
+  user.find({token:token},function(err, mainhandles){
+    if(err || mainhandles.length === 0){
+     return res.send({err:'Unauthorized'})
+    }
+    let savableObj =  {
+      name:req.body.name,
+      location:req.body.location
+    };
+    let some = new db(savableObj);
+  some.save().exec(function(err, docs){
+    console.log(docs)
+    res.send(
+      {docs : docs}
+    );
+  });
+})
+});
+
+router.post('/update/:id', function(req, res) {
   let token = req.headers.token;
   if(!token){
     return res.send({err:'Unauthorized'})
@@ -154,7 +178,7 @@ router.put('/update/:id', function(req, res) {
 })
 });
 
-router.delete('/update/:id', function(req, res) {
+router.post('/update/:id', function(req, res) {
   let token = req.headers.token;
   if(!token){
     return res.send({err:'Unauthorized'})

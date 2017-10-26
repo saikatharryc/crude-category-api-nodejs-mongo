@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 var schemahandy = new Schema(
-  {name : String,
+  {
+    name : String,
   	location :String
   }
 );
