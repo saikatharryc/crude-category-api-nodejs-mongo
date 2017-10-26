@@ -178,7 +178,7 @@ router.post('/update/:id', function(req, res) {
 })
 });
 
-router.post('/update/:id', function(req, res) {
+router.post('/update/delete/:id', function(req, res) {
   let token = req.headers.token;
   if(!token){
     return res.send({err:'Unauthorized'})
